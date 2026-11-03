@@ -1,0 +1,214 @@
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeInBackground 350ms ease-out forwards;
+}
+
+@keyframes fadeInBackground {
+    from {
+        background-color: rgba(16, 16, 16, 0);
+    }
+    to {
+        background-color: rgba(16, 16, 16, 0.8);
+    }
+}
+
+.modal {
+    position: relative;
+    background-color: #0e0e0e;
+    padding: 45px;
+    border-radius: 15px;
+    border: 1px solid rgba(117, 117, 117, 0.3);
+    min-width: 408px;
+}
+
+.closeSvg {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    cursor: pointer;
+}
+
+.title {
+    font-family: var(--second-family);
+    font-weight: 400;
+    font-size: 50px;
+    background: linear-gradient(180deg, #ffffff 0%, #999898 100%);
+    background-clip: text;
+    color: transparent;
+    line-height: 0.9;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 14px;
+    text-align: center;
+    max-width: 317px;
+    background: linear-gradient(180deg, #ffffff 0%, #bebebe 100%);
+    background-clip: text;
+    color: transparent;
+    opacity: 0.7;
+    margin: 0 auto 24px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inputContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 27px;
+    gap: 6.72px;
+}
+
+.labelContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2px;
+}
+
+.label {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 12px;
+    color: #f7f7f7;
+}
+
+.labelSvg {
+    position: relative;
+    bottom: 3.5px;
+}
+
+.input {
+    background-color: transparent;
+    border: 1px solid rgba(117, 117, 117, 0.3);
+    border-radius: 5px;
+    width: 100%;
+    min-width: 263px;
+    height: 35px;
+    font-family: var(--font-family);
+    color: #f7f7f7;
+    font-weight: 400;
+    font-size: 12px;
+    padding: 11.45px 38px;
+}
+
+.input::placeholder {
+    color: #807e7e;
+}
+
+.inputSvgContainer {
+    position: relative;
+}
+
+.inputSvg {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.roomCodeInput {
+    font-size: 16px;
+    height: 50px;
+    padding: 11.45px 22px;
+    min-width: 0;
+    width: 195px;
+    text-transform: uppercase;
+}
+
+.roomCodeInput::placeholder {
+    text-transform: none;
+}
+
+.button {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    margin-top: 31px;
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 12px;
+    text-align: center;
+    color: #f7f7f7;
+    border: 1px solid rgba(153, 64, 64, 0.6);
+    border-radius: 5px;
+    min-width: 263px;
+    height: 37px;
+    background: #331515;
+    transition: background 0.3s ease;
+}
+
+.button:hover {
+    background: #281414;
+}
+
+.buttonText {
+    position: relative;
+    z-index: 2;
+}
+
+.blob {
+  position: absolute;
+  z-index: 1;
+  border-radius: 50%;
+  filter: blur(20px);
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.blob1 {
+  width: 45px; height: 45px;
+  background: #e02a35;
+  top: -30px; left: 10%;
+  animation: move1 6s ease-in-out infinite alternate;
+}
+
+.blob2 {
+  width: 45px; height: 45px;
+  background: #b3121e;
+  bottom: -30px; left: 45%;
+  animation: move2 8s ease-in-out infinite alternate;
+}
+
+.blob3 {
+  width: 45px; height: 45px;
+  background: #ff4b55;
+  top: -20px; right: 5%;
+  animation: move3 7s ease-in-out infinite alternate;
+}
+
+@keyframes move1 {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(140px, 20px) scale(1.3); }
+}
+@keyframes move2 {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(-160px, -15px) scale(0.8); }
+}
+@keyframes move3 {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(-120px, 25px) scale(1.2); }
+}
