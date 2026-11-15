@@ -4,14 +4,14 @@ import css from './page.module.css';
 
 import { useState } from 'react';
  
-import Modal from '@/components/Modal/Modal';
+import Modal, { type ModalProps } from '@/components/Modal/Modal';
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isCreateRoom, setIsCreateRoom] = useState(false);
-  const [isEnterViaCode, setIsEnterViaCode] = useState(false);
+  const [modalType, setModalType] = useState<'create' | 'join' | null>(null);
 
-  const CreateRoomContent = {
+  const CreateRoomContent: ModalProps = {
+    onClose: () => setIsModalOpen(false),
     title: 'Create Room',
     subtitle: 'Set your name and create a room to watch movies and TV series together.',
     inputRequireSvg: '/images/sprite.svg#icon-svgInputRequire',
@@ -24,7 +24,8 @@ export default function Home() {
     buttonSvg: '/images/sprite.svg#icon-burgundyStars'
   }
 
-  const EnterViaCodeContent = {
+  const EnterViaCodeContent: ModalProps = {
+    onClose: () => setIsModalOpen(false),
     title: 'Enter Room Code',
     subtitle: 'Join an existing room by entering its code.',
     placeholder: 'Enter room code...',
@@ -37,7 +38,7 @@ export default function Home() {
   return (
     <>
       {isModalOpen && (
-        <Modal onClose={() => setIsModalOpen(false)} {...(isCreateRoom ? CreateRoomContent : EnterViaCodeContent)} />
+        <Modal {...(modalType === 'create' ? CreateRoomContent : EnterViaCodeContent)} />
       )}
       <section className={css.container}>
         <h1 className={css.title}>YURIN</h1>
@@ -47,8 +48,7 @@ export default function Home() {
             <li>
               <button className={`${css.roomActionButton} ${css.createRoomButton}`} onClick={() => {
                 setIsModalOpen(true);
-                setIsCreateRoom(true);
-                setIsEnterViaCode(false);
+                setModalType('create');
               }}>
                 <svg width={15} height={16}>
                   <use href="/images/sprite.svg#icon-svgCreateARoom"></use>
@@ -59,8 +59,7 @@ export default function Home() {
             <li>
               <button className={`${css.roomActionButton} ${css.enterViaCodeButton}`} onClick={() => {
                 setIsModalOpen(true);
-                setIsCreateRoom(false);
-                setIsEnterViaCode(true);
+                setModalType('join');
               }}>
                 <svg width={30} height={27}>
                   <use href="/images/sprite.svg#icon-svgEnterViaCode"></use>
